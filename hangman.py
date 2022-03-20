@@ -57,18 +57,22 @@ def game(ran_w, guess_n):
 
 
 if __name__ == "__main__":
-    while True:
-        difficulty = input('hard or easy? ').lower()
+    # while True:
+    #     difficulty = input('hard or easy? ').lower()
 
-        if difficulty == "hard":
-            random_word = random.choice(Word_list.possible_try)
-            break
-        elif difficulty == "easy":
-            random_word = random.choice(Word_list.wordlist)
-            break
-        else:
-            print('enter valid difficulty')
+    #     if difficulty == "hard":
+    #         random_word = random.choice(Word_list.possible_try)
+    #         break
+    #     elif difficulty == "easy":
+    #         random_word = random.choice(Word_list.wordlist)
+    #         break
+    #     else:
+    #         print('enter valid difficulty')
 
+    wordlist = open("words.txt", "r")
+
+    random_word = random.choice(wordlist.readlines())
+    wordlist.close()
     guess_num = 9
 
     print()
