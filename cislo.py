@@ -4,6 +4,7 @@ def game(pokusy, hraci, cislo, game_range):
 
     game = True
     while pokusy and game:
+        print(f'zostava pokusov: {pokusy}')
         for i in range(len(hraci)):
             if hraci[i]['is_person']:
                 pokus = int(input(f'{hraci[i]["nickanem"]}: '))
@@ -54,8 +55,7 @@ def start_game(pocet_ludi):
 
     if pocet_ludi < 6 and pocet_ludi > 0:
         for j in range(pocet_ludi):
-            clovek = True if int(
-                input(f'{j + 1}. pocitac alebo clovek? (0/1) ')) else False
+            clovek = True if input(f'{j + 1}. pocitac alebo clovek? (p/c) ').lower() == 'c' else False
             # hraci.append(clovek)
             nickanem = input("nickanem: ")
             hraci.append(
@@ -79,8 +79,9 @@ if __name__ == '__main__':
     hraci = start_game(pocet_ludi)
 
     game_range = tuple(map(int, input('min max : ').split()))
-
-    tries_num = (game_range[1] - game_range[0]) // 2
+    
+    tries_num = len(range(game_range[0], game_range[1]+1)) // 2
+    # tries_num = (game_range[1] - game_range[0]) // 2
 
     cislo = random.randint(game_range[0], game_range[1])
 
@@ -89,8 +90,6 @@ if __name__ == '__main__':
     print()
 
     hraci, pokusy = game(tries_num, hraci, cislo, game_range)
-
-    print()
 
     if not pokusy:
         print('nikto nevyhral')

@@ -58,7 +58,7 @@ def game(winning_rounds, is_comp):
                 temp.append(players[i]["choice"])
             else:
                 players[i]["choice"] = input(
-                    "rock, paper or scissors? (r/p/s) ")
+                    "rock, paper or scissors? (r/p/s) ").lower()
                 temp.append(players[i]["choice"])
 
         log.append(temp)
@@ -80,6 +80,6 @@ def game(winning_rounds, is_comp):
 
 if __name__ == "__main__":
     winning_rounds = int(input("num of winning_rounds: "))
-    is_comp = True if input("computer or person? ") in (
+    is_comp = True if input("computer or person? ").lower() in (
         "computer", 'c') else False
     game(winning_rounds, is_comp)

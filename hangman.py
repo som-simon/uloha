@@ -1,5 +1,6 @@
-from wordle_list import Word_list
+# from wordle_list import Word_list
 import random
+# import os
 
 
 def hangman_word(word, guesses):
@@ -23,7 +24,7 @@ def game(ran_w, guess_n):
     print()
 
     while guess_n:
-        guess = input('guess letter: ')
+        guess = input('guess letter: ').lower()
         print()
 
         if len(guess) == 5:
@@ -69,10 +70,17 @@ if __name__ == "__main__":
     #     else:
     #         print('enter valid difficulty')
 
+    choise = input("print random word? y/N ").lower()
     wordlist = open("words.txt", "r")
 
-    random_word = random.choice(wordlist.readlines())
+    random_word = str(random.choice(wordlist.readlines()))[0:-1]
+    if choise == 'y':
+        print(r"{}".format(random_word))
+    else:
+        pass
+
     wordlist.close()
+
     guess_num = 9
 
     print()
